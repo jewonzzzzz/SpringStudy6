@@ -11,16 +11,39 @@
 	<!-- 프로젝트 관련 스프링 설정의 정보(객체)를 가지고 있는 파일 -->
 	<!-- 웹 정보를 제외한 모든 정보를 가지고 있음 -->
 	
-	<!-- DataSource DB연결 정보를 저장하는 객체 -->
+	<!-- HikariCP 설정정보 객체 -->
+	<bean id="hikariconfig"
+		  class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
+		<property name="jdbcUrl" value="jdbc:log4jdbc:mysql://localhost:3306/springdb" />
+		<property name="username" value="root"/>
+		<property name="password" value="1234"/>
+	</bean>
+	<!-- HikariCP 설정정보 객체 -->
+	
 	<bean id="dataSource"
+		  class="com.zaxxer.hikari.HikariDataSource" 
+		  destroy-method="close">
+		  
+		  <constructor-arg ref="hikariconfig"/>
+		  
+	</bean>
+	
+	
+	<!-- DataSource DB연결 정보를 저장하는 객체 -->
+	<!-- <bean id="dataSource"
 		  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		  
+		  기존설정 
 		  <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
 		  <property name="url" value="jdbc:mysql://localhost:3306/springdb"/>
+		  
+		  <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
+		  <property name="url" value="jdbc:log4jdbc:mysql://localhost:3306/springdb"/>
 		  <property name="username" value="root"/>
 		  <property name="password" value="1234"/>
 		  
-  	</bean>
+  	</bean> -->
 	<!-- DataSource DB연결 정보를 저장하는 객체 -->
 	
 	<!-- SqlSessionFactory : connection 생성(+연결정보), SQL쿼리 실행, Mybatis 접근 -->	
@@ -38,6 +61,19 @@
 	
 	</bean>
 	<!-- SqlSessionFactory : connection 생성(+연결정보), SQL쿼리 실행, Mybatis 접근 -->	
+	
+	
+	
+	<!-- SqlSession (SqlSessionTemplate) : (자동)connection 생성(+연결정보), SQL쿼리 실행,
+		 Mybatis 접근 + 자원해제(자동) -->
+	<bean id="sqlSession"
+		  class="org.mybatis.spring.SqlSessionTemplate" 
+		  destroy-method="clearCache">
+		  
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+	
+	</bean>
+	<!-- SqlSession (SqlSessionTemplate) : connection 생성(+연결정보), SQL쿼리 실행, Mybatis 접근 + 자원해제(자동) -->
 	
 	<context:component-scan base-package="com.itwillbs.persistence"/>
 	
