@@ -66,6 +66,7 @@ p122
 
 
 	* Data Access Layer 구성
+	
 	DAO -(Mybatis-Spring)- MyBatis(SqlSessionFactory) - DB
 	
 	* MyBatis (iBatis) : SQL Mapper 라이브러리(프레임워크)
@@ -112,8 +113,28 @@ p122
 	* Lombok 설치
 	   
 	   
+	   					HandlerMapping
+	   					//
+	   요청 - DispatcherServlet = HandlerAdapter = Controller
+				  ||		\\
+				 View		ViewResolver
+
+	Presentation Layer
 	   
 	   
+ * logger : 객체의 로그 레벨
+ 
+ 	TRACE > DEBUG > INFO > WARN > ERROR > FATAL
+ 	(1)		(2)		(3)	   (4)	  (5)	  (6)
+ 
+ 	FATAL : 시스템 차원의 문제가 발생
+ 	ERROR : 실행중 문제가 발생한 상태정보 출력
+ 	WARN : 시스템 오류의 원인정보 출력	   
+	INFO : 서비스 운영 로그 정보 출력
+	DEBUG : 개발 시 디버깅 용도 레벨
+	TRACE : DEBUG보다 상세정보를 출력
+	   
+	=> log4j.xml에 설정한 레벨값 -> 설정한 레벨값보다 높은 레벨의 메세지만 출력
 
 
  
