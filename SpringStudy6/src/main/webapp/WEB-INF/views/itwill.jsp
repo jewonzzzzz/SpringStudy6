@@ -26,7 +26,13 @@
 	<h2>MemberVO 정보출력</h2>
 	<!-- ${requestScope} -->
 	<h2>${memberVO}</h2>
-	<h2>${vo1}</h2>
+	<h2>${adminVO}</h2>
+	
+	<hr>
+	userid : ${userid }
+	userid : ${param.userid }
+	userpw : ${userpw }
+	userpw : ${param.userpw }
 	
 	
 	
