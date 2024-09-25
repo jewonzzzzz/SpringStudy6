@@ -24,7 +24,6 @@
 	<bean id="dataSource"
 		  class="com.zaxxer.hikari.HikariDataSource" 
 		  destroy-method="close">
-		  
 		  <constructor-arg ref="hikariconfig"/>
 		  
 	</bean>
@@ -76,6 +75,8 @@
 	<!-- SqlSession (SqlSessionTemplate) : connection 생성(+연결정보), SQL쿼리 실행, Mybatis 접근 + 자원해제(자동) -->
 	
 	<context:component-scan base-package="com.itwillbs.persistence"/>
+	
+	<context:component-scan base-package="com.itwillbs.service"/>
 	
 	
 	
