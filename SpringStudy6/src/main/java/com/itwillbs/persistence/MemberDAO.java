@@ -21,7 +21,7 @@ public interface MemberDAO {
 	public MemberVO loginMember(String userid, String userpw);
 	
 	// 사용자 정보조회
-	public MemberVO getMember(MemberVO vo);
+	public MemberVO getMember(String userid);
 	
 	// 사용자 정보수정
 	public int updateMember(MemberVO uvo);

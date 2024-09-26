@@ -92,11 +92,10 @@ public class MemberDAOTest {
 	//@Test
 	public void 사용자정보조회() {
 		System.out.println(" Test : 사용자정보조회() 시작");
+				
+		String id = "admin";
 		
-		MemberVO vo = new MemberVO();
-		vo.setUserid("admin");
-		
-		MemberVO resultVO = mdao.getMember(vo);
+		MemberVO resultVO = mdao.getMember(id);
 		
 		if(resultVO != null) {
 			System.out.println(" Test : 사용자 정보있음");

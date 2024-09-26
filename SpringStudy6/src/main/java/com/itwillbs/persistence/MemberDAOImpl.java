@@ -105,7 +105,7 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 	
 	@Override
-	public MemberVO getMember(MemberVO vo) {
+	public MemberVO getMember(String userid) {
 		System.out.println(" DAO : memberInfo(MemberVO vo) 실행");
 		
 		// sql 구문 mapper에 생성
@@ -113,7 +113,7 @@ public class MemberDAOImpl implements MemberDAO{
 		// sql 실행
 		//MemberVO resultVO = sqlSession.selectOne(NAMESPACE+".getMember", vo);
 		
-		return sqlSession.selectOne(NAMESPACE+".getMember", vo);
+		return sqlSession.selectOne(NAMESPACE+".getMember", userid);
 	}
 	
 	@Override
