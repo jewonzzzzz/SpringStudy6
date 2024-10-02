@@ -11,9 +11,7 @@
 	
 	${memberList } <hr>
 	<%-- ${sessionScope } <hr> --%>
-	${requestScope }
-	
-	
+	<%-- ${requestScope } --%>
 	
 </body>
 </html>
